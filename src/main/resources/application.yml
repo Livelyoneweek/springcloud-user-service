@@ -1,0 +1,30 @@
+server:
+  port: 0 #랜덤포트
+
+spring:
+  application:
+    name: user-service
+  h2:
+    console:
+      enabled: true #콘솔사용
+      settings:
+        web-allow-others: true #외부접속 허용
+      path: /h2-console #콘솔의 주소
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true #eureka 서버로부터 인스턴스들의 정보를 주기적으로 가져올 것인지를 설정하는 속성임
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instacne_id:${random.value}}
+
+greeting:
+  message: Welcome to the Simple E-commerce.
