@@ -24,7 +24,6 @@ public class UserController {
 
     private final Greeting greeting;
     private final UserService userService;
-
     private final Environment env;
 
     @GetMapping("/health_check")
