@@ -60,6 +60,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public UserDto getUserDetailsByEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        if (userEntity == null) {
+            throw new UsernameNotFoundException("해당 이메일로 된 계정은 없습니다");
+        }
+        UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
+        return userDto;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByEmail(username);
 
@@ -70,4 +80,6 @@ public class UserServiceImpl implements UserService{
         return new User(userEntity.getEmail(), userEntity.getEncryptedPwd(),
                 true,true,true,true,new ArrayList<>());
     }
+
+
 }
