@@ -33,6 +33,14 @@ logging:
   level:
     com.example.userservice: DEBUG
 
+
+#actuator 사용할 메소드 등록
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+
 #token:
 #  expiration_time: 60*60*24*1000
 #  secret: user_token
