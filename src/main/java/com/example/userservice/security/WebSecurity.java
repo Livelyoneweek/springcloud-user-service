@@ -58,10 +58,12 @@ public class WebSecurity {
                     try {
                         authorize
                                 .requestMatchers(PathRequest.toH2Console()).permitAll()
+                                .antMatchers("/actuator/**").permitAll()
 //                                .requestMatchers(new IpAddressMatcher("172.16.10.231")).permitAll() //ip 확인할 것
                                 .anyRequest().permitAll()
                                 .and()
                                 .addFilter(getAuthenticationFilter());
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
