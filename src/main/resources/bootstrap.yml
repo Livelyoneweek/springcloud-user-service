@@ -2,6 +2,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+#      name: config-service #이거는 application 쓰겠다는 뜻
       name: ecommerce
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev
