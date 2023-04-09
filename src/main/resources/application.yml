@@ -15,11 +15,11 @@ spring:
       settings:
         web-allow-others: true #외부접속 허용
       path: /h2-console #콘솔의 주소
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
 #    username: sa
-#    password:
+#    password: 1234
 
 
 eureka:
