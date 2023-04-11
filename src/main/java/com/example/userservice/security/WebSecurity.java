@@ -9,12 +9,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -25,30 +23,6 @@ public class WebSecurity {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ObjectPostProcessor<Object> objectPostProcessor;
     private final Environment env;
-
-//    @Bean
-//    protected SecurityFilterChain config(HttpSecurity http) throws Exception {
-//        AuthenticationManager authenticationManager = authenticationManager(http.getSharedObject(AuthenticationConfiguration.class));
-//        http.csrf().disable();
-//        http.headers().frameOptions().disable();
-//        http.authorizeRequests().antMatchers("/**").hasIpAddress("172.16.10.231") //IP 주소는 변경할 것
-//                        .and().addFilter(getAuthenticationFilter(authenticationManager));
-//        http.authorizeHttpRequests().requestMatchers(PathRequest.toH2Console()).permitAll();
-//        return http.build();
-//    }
-//
-//    @Bean
-//    AuthenticationManager authenticationManager(AuthenticationConfiguration authConfiguration) throws Exception {
-//        return authConfiguration.getAuthenticationManager();
-//    }
-//
-//    private AuthenticationFilter getAuthenticationFilter(AuthenticationManager authenticationManager) {
-//        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-//        authenticationFilter.setAuthenticationManager(authenticationManager);
-//
-//        return authenticationFilter;
-//    }
-
 
     @Bean
     protected SecurityFilterChain config(HttpSecurity http) throws Exception {
