@@ -3,6 +3,7 @@ package com.example.userservice.service;
 import com.example.userservice.client.OrderServiceClient;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.entity.UserEntity;
+import com.example.userservice.error.FeignErrorDecoder;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.vo.ResponseOrder;
 import feign.FeignException;
@@ -65,13 +66,17 @@ public class UserServiceImpl implements UserService{
 //                });
 //        List<ResponseOrder> orderList = orderListResponse.getBody();
 
+
         // Using a Feign Client + exception handling
-        List<ResponseOrder> orderList = null;
-        try {
-            orderList = orderServiceClient.getOrders(userId);
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//        List<ResponseOrder> orderList = null;
+//        try {
+//            orderList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
+
+        // ErrorDecoder 사용
+        List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
 
         userDto.setOrders(orderList);
 
