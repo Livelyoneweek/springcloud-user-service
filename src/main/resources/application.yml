@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: user-service
+  zipkin:
+    base-url: http:127.0.0.1:9411
+    enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0 #발생된 로그를 어느정도의 빈도수로 zipkin에 전달할 것인지, 1은 100%
+
   rabbitmq:
     host: 127.0.0.1
     port: 5672
